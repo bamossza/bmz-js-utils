@@ -62,6 +62,8 @@ console.log('sumValueArray ==> ', utils.sumValueArray([1, 2, 3]));
 
 Result:
 ```
+![alt bmz-logo](result-utils.png)
+
 ## Authors
 
 * **[Panusitt Khuenkham](https://github.com/bamossza)** - *Senior Developer*
