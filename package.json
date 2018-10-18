@@ -1,0 +1,40 @@
+{
+  "name": "bmz-js-utils",
+  "version": "1.0.0-beta.2.8",
+  "description": "bamossza javascript utils",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "start": "tsc",
+    "prepublish": "",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bamossza/bmz-js-utils.git"
+  },
+  "keywords": [
+    "js",
+    "ts",
+    "javascript",
+    "utils",
+    "utilities",
+    "js-utils",
+    "typescript",
+    "ts-utilities"
+  ],
+  "author": "Panusitt Khuenkham",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bamossza/bmz-js-utils/issues"
+  },
+  "homepage": "https://github.com/bamossza/bmz-js-utils#readme",
+  "dependencies": {
+    "@types/uuid": "^3.4.4",
+    "rxjs": "^6.3.3",
+    "uuid": "3.3.2"
+  },
+  "devDependencies": {
+    "typescript": "^3.1.3"
+  }
+}
