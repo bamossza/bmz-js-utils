@@ -40,6 +40,10 @@ Test: console.log(utils.getDeviceName());
 // Result: mobile | tablet | desktop
 ```
 
+## Could be use functions
+
+[Wiki functions](https://github.com/bamossza/bmz-js-utils/wiki/functions)
+
 ## Authors
 
 * **[Panusitt Khuenkham](https://github.com/bamossza)** - *Senior Developer*
