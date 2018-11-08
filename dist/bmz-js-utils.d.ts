@@ -17,4 +17,7 @@ export declare class BmzJsUtils {
     static mergeArray(arrMain: Array<any>, arrMerge: Array<any>): Array<any>;
     static sumValueArray(numArr: Array<number>): number;
     static strPadLeft(str: string, maxLength: number, fillString: string): string;
+    static cleanHtmlTag(str: string): string;
+    static base64toBlob(base64Data: string, contentType?: string): Blob;
+    static exportExcelFile(blobContent: string, fileName: string, ext?: string): void;
 }
