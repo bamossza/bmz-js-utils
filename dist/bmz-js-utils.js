@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var uuid_1 = require("uuid");
 var interval_1 = require("rxjs/internal/observable/interval");
 var operators_1 = require("rxjs/operators");
+var file_saver_1 = require("file-saver");
 var BmzJsUtils = /** @class */ (function () {
     function BmzJsUtils() {
     }
@@ -61,6 +62,31 @@ var BmzJsUtils = /** @class */ (function () {
     };
     BmzJsUtils.strPadLeft = function (str, maxLength, fillString) {
         return str.padStart(maxLength, fillString);
+    };
+    BmzJsUtils.cleanHtmlTag = function (str) {
+        return str.replace(/<\/?[^>]+(>|$)/g, '');
+    };
+    BmzJsUtils.base64toBlob = function (base64Data, contentType) {
+        contentType = contentType || '';
+        var sliceSize = 1024;
+        var byteCharacters = atob(base64Data);
+        var bytesLength = byteCharacters.length;
+        var slicesCount = Math.ceil(bytesLength / sliceSize);
+        var byteArrays = new Array(slicesCount);
+        for (var sliceIndex = 0; sliceIndex < slicesCount; ++sliceIndex) {
+            var begin = sliceIndex * sliceSize;
+            var end = Math.min(begin + sliceSize, bytesLength);
+            var bytes = new Array(end - begin);
+            for (var offset = begin, i = 0; offset < end; ++i, ++offset) {
+                bytes[i] = byteCharacters[offset].charCodeAt(0);
+            }
+            byteArrays[sliceIndex] = new Uint8Array(bytes);
+        }
+        return new Blob(byteArrays, { type: contentType });
+    };
+    BmzJsUtils.exportExcelFile = function (blobContent, fileName, ext) {
+        var blob = new Blob([BmzJsUtils.base64toBlob(blobContent, 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')], {});
+        file_saver_1.saveAs(blob, (fileName || Date.now()) + ('.' + ext || '.xlsx'));
     };
     return BmzJsUtils;
 }());
