@@ -6,7 +6,10 @@
     "outDir": "./dist",
     "strict": true,
     "lib": [
-      "es6", "es2017.string", "dom"
+      "es5",
+      "es2015",
+      "dom",
+      "scripthost"
     ]
   }
 }
