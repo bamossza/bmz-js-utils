@@ -1,8 +1,6 @@
 import {v4} from 'uuid';
-import {Observable} from "rxjs/internal/Observable";
-import {interval} from "rxjs/internal/observable/interval";
-import {map, share} from "rxjs/operators";
 import {saveAs} from "file-saver";
+import * as _ from "lodash";
 
 export class BmzJsUtils {
 
@@ -35,10 +33,6 @@ export class BmzJsUtils {
         return this.getDeviceName() === 'desktop';
     }
 
-    static whatTime(): Observable<Date> {
-        return interval(1000).pipe(map(() => new Date())).pipe(share());
-    }
-
     static strToLower(str: string): string {
         return str.toLowerCase();
     }
@@ -49,10 +43,6 @@ export class BmzJsUtils {
 
     static trim(str: string): string {
         return str.replace(/^\s+|\s+$/gm, '');
-    }
-
-    static strPadRight(str: string, maxLength: number, fillString: string) {
-        return str.padEnd(maxLength, fillString);
     }
 
     static PI(): number {
@@ -75,9 +65,15 @@ export class BmzJsUtils {
         return numArr.reduce((s, n) => s + n);
     }
 
-    static strPadLeft(str: string, maxLength: number, fillString: string): string {
-        return str.padStart(maxLength, fillString);
+    static strPadLeft(str: string, maxLength: number, fillString?: string): string {
+        return _.padStart(str, maxLength, fillString);
     }
+
+    static strPadRight(str: string, maxLength: number, fillString?: string) {
+        str = str || ' ';
+        return _.padEnd(str, maxLength, fillString);
+    }
+
 
     static cleanHtmlTag(str: string): string {
         return str.replace(/<\/?[^>]+(>|$)/g, '');
@@ -105,5 +101,13 @@ export class BmzJsUtils {
     static exportExcelFile(blobContent: string, fileName: string, ext?: string): void {
         const blob = new Blob([BmzJsUtils.base64toBlob(blobContent, 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')], {});
         saveAs(blob, (fileName || Date.now()) + ('.' + ext || '.xlsx'));
+    }
+
+    static array_has_dupes(array: Array<string | number>): Array<string | number> {
+        return array.filter((item, index, arr) => arr.indexOf(item) != arr.lastIndexOf(item) && arr.indexOf(item) == index);
+    }
+
+    static array_has_dupes_count(array: Array<string | number>): number {
+        return (array.filter((item, index, arr) => arr.indexOf(item) != arr.lastIndexOf(item) && arr.indexOf(item) == index)).length;
     }
 }

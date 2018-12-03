@@ -1,6 +1,6 @@
 # Bamossza JS Utils
 
-![alt bmz-logo](https://tool.bamossza.com/assets/images/logo/m32_.png)
+![alt bmz-logo](m32_.png)
 
 Common script utils for developer.
 

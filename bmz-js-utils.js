@@ -1,5 +1,5 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
+exports.__esModule = true;
 var uuid_1 = require("uuid");
 var file_saver_1 = require("file-saver");
 var _ = require("lodash");
